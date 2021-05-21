@@ -1,7 +1,6 @@
 # Simple Hangman Bot
 # Author: Lev Bernstein
 
-
 HANGMAN = [
     "*******\n*  I  *\n*     *\n*     *\n*     *\n*     *\n*******",
     "*******\n*  I  *\n*  O  *\n*     *\n*     *\n*     *\n*******",
@@ -50,7 +49,7 @@ def guess():
     if not "_" in progress:
         print("Yay! I win!")
         return "1"
-    if guesses > 8:
+    if guesses > 8: # arbitrary limit on 8 guesses. Just felt like doing 8.
         print("Oh no! I ran out of guesses! Guess I lose...")
         return "-1"
     searching = True
@@ -65,11 +64,6 @@ def guess():
                 searching = False
                 break
     return guess
-
-def fill(letter):
-    global progress
-    positions = input("Please enter the positions in which this letter appears, starting at 1 on the left, separated by a space.\n").split(" ")
-    return positions
     
 def main():
     global progress, words, guesses
@@ -95,7 +89,7 @@ def main():
             print("I'm so smart.")
             while not valid:
                 valid = True
-                positions = fill(letter)
+                positions = input("Please enter the positions in which this letter appears, starting at 1 on the left, separated by a space.\n").split(" ")
                 for position in positions:
                     if progress[int(position) - 1] != "_":
                         valid = False
@@ -123,7 +117,7 @@ def main():
                 if letter not in word:
                     newWords.append(word)
             words = newWords
-        #print(words)
+        #print(words) # uncomment this line to see the program narrow down the words with each guess
 
 if __name__ == "__main__":
     main()
