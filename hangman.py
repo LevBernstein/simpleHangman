@@ -102,7 +102,8 @@ def main():
                         break
                 if not valid:
                     print("There's already a letter in at least one of the positions you gave!")
-            for position in positions: progress[int(position) - 1] = letter
+            for position in positions:
+                progress[int(position) - 1] = letter
             for word in words:
                 if letter in word:
                     valid = True
