@@ -38,15 +38,10 @@ def setup():
 
 def status():
     print(HANGMAN[guesses])
-    result = ""
-    for letter in progress:
-        result += letter + "  "
-    print("Current word status:")
-    print(result[:-2])
-    result = ""
-    for i in range(len(progress)):
-        result += str(i+1) + "__"
-    print(result[:-2])
+    result = ("  ".join(letter for letter in progress))
+    print(result)
+    result = ("__".join(str(i+1) for i in range(len(progress))))
+    print(result)
 
 def guess():
     global order
