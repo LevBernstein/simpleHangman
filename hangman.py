@@ -38,10 +38,8 @@ def setup():
 
 def status():
     print(HANGMAN[guesses])
-    result = ("  ".join(letter for letter in progress))
-    print(result)
-    result = ("__".join(str(i+1) for i in range(len(progress))))
-    print(result)
+    print(("  ".join(letter for letter in progress)))
+    print(("__".join(str(i+1) for i in range(len(progress)))))
 
 def guess():
     global order
@@ -78,10 +76,10 @@ def main():
         response = False
         while not response:
             correct = input("My guess is " + letter + "! Was I right? If so, please type yes. If not, please type no.\n").lower()
-            if correct != "yes" and correct != "no" and correct != "y" and correct != "n":
-                print("Invalid response!")
-            else:
+            if correct in ["yes", "y", "no", "n"]:
                 response = True
+            else:
+                print("Invalid response!")
         if correct.startswith("y"):
             newWords = []
             print("I'm so smart.")
